@@ -19,8 +19,8 @@ class Visualizer:
         # Create screen object.
         self.screen = pygame.display.set_mode(screen_size)
 
-        # Give the screen a white background.
-        self.screen.fill((255, 255, 255))
+        # Give the screen a black background.
+        self.screen.fill((0, 0, 0))
 
         self.rod_length = self.rod_length_factor * min(self.xsize, self.ysize)
 
@@ -48,18 +48,19 @@ class Visualizer:
         massy = self.ysize/2 - self.rod_length*math.sin(angle)
 
         # Give the screen a white background.
-        self.screen.fill((255, 255, 255))
+        self.screen.fill((0, 0, 0))
         # Draw the track
-        pygame.draw.line(self.screen, (0,0,0), [self.track_origin, self.ysize/2], [self.track_end, self.ysize/2], 3)
-
-        #draw the rod
-        pygame.draw.line(self.screen, (0,0,255), [cartx, self.ysize/2], [massx, massy], 2)
+        pygame.draw.line(self.screen, (94,106,113), [self.track_origin, self.ysize/2], [self.track_end, self.ysize/2], 3)
 
         #draw the cart
-        pygame.draw.circle(self.screen, (255,0,0), [int(cartx), self.ysize/2], 8)
+        pygame.draw.rect(self.screen, (152,30,50), [int(cartx)-20, (self.ysize/2)-10, 40, 20])
+        pygame.draw.circle(self.screen, (255,255,255), [int(cartx), self.ysize/2], 8)
+
+        #draw the rod
+        pygame.draw.line(self.screen, (255,255,255), [cartx, self.ysize/2], [massx, massy], 8)
 
         #draw the mass at the end of the rod
-        pygame.draw.circle(self.screen, (0,0,0), [int(massx), int(massy)], 5)
+        #pygame.draw.circle(self.screen, (152,30,50), [int(massx), int(massy)], 5)
 
         #draw the screen
         pygame.display.flip()
